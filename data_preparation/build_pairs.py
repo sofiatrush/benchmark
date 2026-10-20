@@ -3,7 +3,7 @@ import random
 from collections import Counter
 from pathlib import Path
 
-from config import MAX_PAIRS_PER_POST, MAX_PAIRS_PER_TEMPLATE, OUTPUT_DIR, QUOTAS, SEED
+from data_config import MAX_PAIRS_PER_POST, MAX_PAIRS_PER_TEMPLATE, OUTPUT_DIR, QUOTAS, SEED
 from data import load_clusters, load_posts, mark_templates
 from sources import Candidate, Post, cluster_pairs, exact_groups, lexical_pairs, random_pairs
 
