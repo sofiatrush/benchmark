@@ -5,7 +5,7 @@ from pathlib import Path
 
 from data_config import MAX_PAIRS_PER_POST, MAX_PAIRS_PER_TEMPLATE, OUTPUT_DIR, QUOTAS, SEED
 from data import load_clusters, load_posts, mark_templates
-from sources import Candidate, Post, cluster_pairs, exact_groups, lexical_pairs, random_pairs
+from source import Candidate, Post, cluster_pairs, exact_groups, lexical_pairs, random_pairs
 
 type Row = tuple[str, str | int, Post, Post]
 

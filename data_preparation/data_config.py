@@ -23,4 +23,4 @@ RANDOM_CANDIDATES_PER_QUOTA = 10
 RANDOM_ATTEMPTS_PER_QUOTA = 100
 
 QUOTAS = {"exact": 1700, "cluster": 1500, "lexical": 1500, "random": 1300}
-OUTPUT_DIR = "output"
+OUTPUT_DIR = "data_preparation/output"
