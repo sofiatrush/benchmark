@@ -3,7 +3,7 @@ from collections import Counter, defaultdict
 
 from huggingface_hub import HfApi, hf_hub_download
 
-from config import (DAY_MS, END_MS, FOOTER_MIN_POSTS, MIN_KEY_CHARS, MONTHS, REPO, REVISION, START_MS,
+from data_config import (DAY_MS, END_MS, FOOTER_MIN_POSTS, MIN_KEY_CHARS, MONTHS, REPO, REVISION, START_MS,
                     TEMPLATE_MIN_DAYS, TEMPLATE_MIN_POSTS)
 from text_utils import clean_text, is_ukrainian, match_key, non_empty_lines, strip_footer, template_signature
 
