@@ -3,9 +3,10 @@ from pathlib import Path
 
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
-from datasketch import MinHash
+from datasketch import MinHash, MinHashLSH
 
-from methods_config import (OUTPUT_PATH, PAIRS_PATH, TFIDF_VARIANTS, MINHASH_NGRAM, MINHASH_PERMUTATIONS, SEED)
+from methods_config import (OUTPUT_PATH, PAIRS_PATH, TFIDF_VARIANTS, MINHASH_NGRAM, MINHASH_PERMUTATIONS,
+                            SEED, LSH_THRESHOLD)
 
 
 def read_pairs(path: Path) -> list[dict]:
@@ -35,6 +36,14 @@ def minhash(text: str) -> MinHash:
 
 def minhash_scores(texts_a: list[str], texts_b: list[str]) -> list[float]:
     return [minhash(text_a).jaccard(minhash(text_b)) for text_a, text_b in zip(texts_a, texts_b)]
+
+def lsh_candidates(texts: list[str]) -> set[tuple[int, int]]:
+    lsh = MinHashLSH(threshold=LSH_THRESHOLD, num_perm=MINHASH_PERMUTATIONS)
+    signatures = [minhash(text) for text in texts]
+    for index, signature in enumerate(signatures):
+        lsh.insert(index, signature)
+    return {tuple(sorted((index, other))) for index, signature in enumerate(signatures)
+            for other in lsh.query(signature) if other != index}
 
 
 def write_scores(pair_ids: list[str], scores: dict[str, list[float]], path: Path) -> None:
