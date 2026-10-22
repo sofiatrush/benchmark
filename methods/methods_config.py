@@ -7,3 +7,8 @@ TFIDF_VARIANTS = {
     "tfidf_char4": ("char_wb", (4, 4)),
     "tfidf_char5": ("char_wb", (5, 5)),
 }
+
+SEED = 42
+
+MINHASH_NGRAM = 5
+MINHASH_PERMUTATIONS = 128
